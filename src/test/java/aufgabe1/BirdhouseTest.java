@@ -75,98 +75,98 @@ class BirdhouseTest {
         assertEquals(amountOfSeeds * 3, birdhouse.getFoodToAmountMap().get(seed));
     }
 
-//    @Test
-//    void testVisitWithoutFood() {
-//        // given
-//        Birdhouse birdhouse = new Birdhouse();
-//        Bird      bird      = new Pigeon();
-//
-//        // when
-//        Food food = birdhouse.visit(bird);
-//
-//        // then
-//        assertEquals(0, birdhouse.getFoodToAmountMap().size());
-//        assertTrue(food instanceof Water);
-//    }
-//
-//    @Test
-//    void testVisitOnlyNonPreferredFoods() {
-//        // given
-//        Birdhouse birdhouse = new Birdhouse();
-//        Bird      bird      = new Pigeon();
-//        birdhouse.addFood(new Worm(), AMOUNT);
-//
-//        // when
-//        boolean gotWorm = false;
-//        for (int i = 0; i < 100; i++) {
-//            Food food = birdhouse.visit(bird);
-//            if (food instanceof Worm) {
-//                gotWorm = true;
-//            }
-//        }
-//
-//        // then
-//        assertFalse(gotWorm);
-//    }
-//
-//    @Test
-//    void testVisitPreferredFoods() {
-//        // given
-//        Birdhouse birdhouse = new Birdhouse();
-//        Bird      bird      = new Woodpecker();
-//        birdhouse.addFood(new Seed(), AMOUNT);
-//        birdhouse.addFood(new Nut(), AMOUNT);
-//
-//        // when
-//        int amountOfSeed = 0;
-//        int amountOfNut  = 0;
-//        for (int i = 0; i < AMOUNT * 2; i++) {
-//            Food food = birdhouse.visit(bird);
-//            if (food instanceof Seed) {
-//                amountOfSeed++;
-//            }
-//            if (food instanceof Nut) {
-//                amountOfNut++;
-//            }
-//        }
-//        Food foodAfterPreferredFoodsRanOut = birdhouse.visit(bird);
-//
-//        // then
-//        assertEquals(AMOUNT, amountOfSeed);
-//        assertEquals(AMOUNT, amountOfNut);
-//        assertFalse(foodAfterPreferredFoodsRanOut instanceof Seed, "sobald es keine Samen mehr gibt, sollte Vogel keine Samen mehr bekommen");
-//        assertFalse(foodAfterPreferredFoodsRanOut instanceof Nut, "sobald es keine Nüsse mehr gibt, sollte Vogel keine Nüsse mehr bekommen");
-//        assertFalse(birdhouse.getFoodToAmountMap().containsKey(foodAfterPreferredFoodsRanOut), "wenn ganze Nahrung im Vogelhaus aufgebraucht ist, sollte keine Nahrung vom Vogelhaus zurückgegeben werden!");
-//    }
-//
-//    @Test
-//    void testVisitMultiplePreferredFoodsWithInheritance() {
-//        // given
-//        Birdhouse birdhouse = new Birdhouse();
-//        Bird      bird      = new Woodpecker();
-//        birdhouse.addFood(new Seed(), AMOUNT);
-//        birdhouse.addFood(new Peanut(), AMOUNT); // Hinweis: Woodpecker hat als preferredFoods nur `Nut`, nicht `Peanut`, aber `Peanut` erbt von `Nut`
-//
-//        // when
-//        int amountOfSeed = 0;
-//        int amountOfPeanut  = 0;
-//        for (int i = 0; i < AMOUNT * 2; i++) {
-//            Food food = birdhouse.visit(bird);
-//            if (food instanceof Seed) {
-//                amountOfSeed++;
-//            }
-//            if (food instanceof Peanut) {
-//                amountOfPeanut++;
-//            }
-//        }
-//        Food foodAfterPreferredFoodsRanOut = birdhouse.visit(bird);
-//
-//        // then
-//        assertEquals(AMOUNT, amountOfSeed);
-//        assertEquals(AMOUNT, amountOfPeanut);
-//        assertFalse(foodAfterPreferredFoodsRanOut instanceof Seed, "sobald es keine Samen mehr gibt, sollte Vogel keine Samen mehr bekommen");
-//        assertFalse(foodAfterPreferredFoodsRanOut instanceof Peanut, "sobald es keine Erdnüsse mehr gibt, sollte Vogel keine Erdnüsse mehr bekommen");
-//        assertFalse(birdhouse.getFoodToAmountMap().containsKey(foodAfterPreferredFoodsRanOut), "wenn ganze Nahrung im Vogelhaus aufgebraucht ist, sollte keine Nahrung vom Vogelhaus zurückgegeben werden!");
-//    }
+   @Test
+   void testVisitWithoutFood() {
+       // given
+       Birdhouse birdhouse = new Birdhouse();
+       Bird      bird      = new Pigeon();
+
+       // when
+       Food food = birdhouse.visit(bird);
+
+       // then
+       assertEquals(0, birdhouse.getFoodToAmountMap().size());
+       assertTrue(food instanceof Water);
+   }
+
+   @Test
+   void testVisitOnlyNonPreferredFoods() {
+       // given
+       Birdhouse birdhouse = new Birdhouse();
+       Bird      bird      = new Pigeon();
+       birdhouse.addFood(new Worm(), AMOUNT);
+
+       // when
+       boolean gotWorm = false;
+       for (int i = 0; i < 100; i++) {
+           Food food = birdhouse.visit(bird);
+           if (food instanceof Worm) {
+               gotWorm = true;
+           }
+       }
+
+       // then
+       assertFalse(gotWorm);
+   }
+
+   @Test
+   void testVisitPreferredFoods() {
+       // given
+       Birdhouse birdhouse = new Birdhouse();
+       Bird      bird      = new Woodpecker();
+       birdhouse.addFood(new Seed(), AMOUNT);
+       birdhouse.addFood(new Nut(), AMOUNT);
+
+       // when
+       int amountOfSeed = 0;
+       int amountOfNut  = 0;
+       for (int i = 0; i < AMOUNT * 2; i++) {
+           Food food = birdhouse.visit(bird);
+           if (food instanceof Seed) {
+               amountOfSeed++;
+           }
+           if (food instanceof Nut) {
+               amountOfNut++;
+           }
+       }
+       Food foodAfterPreferredFoodsRanOut = birdhouse.visit(bird);
+
+       // then
+       assertEquals(AMOUNT, amountOfSeed);
+       assertEquals(AMOUNT, amountOfNut);
+       assertFalse(foodAfterPreferredFoodsRanOut instanceof Seed, "sobald es keine Samen mehr gibt, sollte Vogel keine Samen mehr bekommen");
+       assertFalse(foodAfterPreferredFoodsRanOut instanceof Nut, "sobald es keine Nüsse mehr gibt, sollte Vogel keine Nüsse mehr bekommen");
+       assertFalse(birdhouse.getFoodToAmountMap().containsKey(foodAfterPreferredFoodsRanOut), "wenn ganze Nahrung im Vogelhaus aufgebraucht ist, sollte keine Nahrung vom Vogelhaus zurückgegeben werden!");
+   }
+
+   @Test
+   void testVisitMultiplePreferredFoodsWithInheritance() {
+       // given
+       Birdhouse birdhouse = new Birdhouse();
+       Bird      bird      = new Woodpecker();
+       birdhouse.addFood(new Seed(), AMOUNT);
+       birdhouse.addFood(new Peanut(), AMOUNT); // Hinweis: Woodpecker hat als preferredFoods nur `Nut`, nicht `Peanut`, aber `Peanut` erbt von `Nut`
+
+       // when
+       int amountOfSeed = 0;
+       int amountOfPeanut  = 0;
+       for (int i = 0; i < AMOUNT * 2; i++) {
+           Food food = birdhouse.visit(bird);
+           if (food instanceof Seed) {
+               amountOfSeed++;
+           }
+           if (food instanceof Peanut) {
+               amountOfPeanut++;
+           }
+       }
+       Food foodAfterPreferredFoodsRanOut = birdhouse.visit(bird);
+
+       // then
+       assertEquals(AMOUNT, amountOfSeed);
+       assertEquals(AMOUNT, amountOfPeanut);
+       assertFalse(foodAfterPreferredFoodsRanOut instanceof Seed, "sobald es keine Samen mehr gibt, sollte Vogel keine Samen mehr bekommen");
+       assertFalse(foodAfterPreferredFoodsRanOut instanceof Peanut, "sobald es keine Erdnüsse mehr gibt, sollte Vogel keine Erdnüsse mehr bekommen");
+       assertFalse(birdhouse.getFoodToAmountMap().containsKey(foodAfterPreferredFoodsRanOut), "wenn ganze Nahrung im Vogelhaus aufgebraucht ist, sollte keine Nahrung vom Vogelhaus zurückgegeben werden!");
+   }
 
 }
