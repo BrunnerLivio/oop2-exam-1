@@ -1,0 +1,116 @@
+= oopI2 Prüfung 1
+
+== Bearbeitet von
+
+* Vorname Nachname
+
+== Abgabe
+
+* Bearbeitungszeit: 60 Minuten
+* Die Abgabe erfolgt durch ein "Push" auf den Master-Branch in Ihrem GitHub-Repository.
+
+== Erlaubte Hilfsmittel
+
+* Erlaubt sind sämtliche schriftlichen Unterlagen, Notizen und Code (physisch und elektronisch) und Ihr Laptop.
+* Nicht erlaubt ist das Internet (wenn vorhanden Flugmodus aktivieren, sonst WLAN deaktivieren), ausser zum Pushen der Commits zur Abgabe der Prüfung.
+
+== Bitte beachten Sie
+
+* Tragen Sie, am besten sofort, Ihren Namen unter "Bearbeitet von" ein. Manche GitHub-Account-Namen können nicht eindeutig einer Person zugeordnet werden.
+* Lösungen mit Compile-Fehlern führen zu einem deutlichen Punkteabzug.
+
+== Aufgabe 1 - Datenstrukturen (17 Punkte)
+
+Sie entwickeln ein modernes Smart-Vogelhäuschen (die Klasse `Birdhouse` im Package `aufgabe1`), welches die folgenden Eigenschaften aufweist:
+
+* es bietet genug Platz, um theoretisch unendlich viel Nahrung (`Food`) für die Vögel (`Bird`) fassen zu können
+* Wenn ein neues `Birdhouse` Objekt erstellt wird, weist dieses noch keine Nahrung auf, dieses muss nach der Erstellung hinzugefügt werden.
+* In der Map `foodToAmountMap` speichern Sie jeweils, welche Menge von welchem `Food` sich im `Birdhouse` befindet.
+* Jedes `Birdhouse`-Objekt ist an eine Wasserleitung angeschlossen. Das bedeutet, dass die Vögel immer Wasser trinken können, egal ob es Nahrung gibt oder nicht.
+* Bei jedem Besuch (`visit`) eines Vogels, wird genau ein Stück von einem beliebigen der bevorzugten Nahrung (`preferredFoods`) welches gerade im Vogelhaus ist vom Vogel mitgenommen (aber noch **nicht** gegessen)
+** Gibt es keines der bevorzugten Nahrung des Vogels in Vogelhaus, erhält der Vogel Wasser.
+
+Für Vögel (`Bird` im Package `aufgabe1/bird`) gilt:
+
+* jeder Vogel von jeder Vogelart trinkt gerne Wasser (`Water`), ohne dass `Water` in `preferredFoods` ist.
+
+Sie dürfen den bestehenden Code in allen Klassen im Package `aufgabe1` **nicht** verändern und nur neuen Code hinzufügen.
+Die einzige **Ausnahme** davon ist die Methode `addFood` in der Klasse `Birdhouse`, den Inhalt dieser Methode **dürfen** (und sollen) Sie **ändern**.
+Weiterhin dürfen Sie in den Testklassen `BirdTest` und `BirdhouseTest` nur `//` entfernen und ansonsten keine Änderungen machen.
+
+Lassen Sie sich nicht durch die Länge eines Tests beirren, es könnte sein, dass ein Test mit vielen Zeilen einfacher zu implementieren ist und umgekehrt.
+Wenn Sie zu lange brauchen um einen Test zu erfüllen, gehen Sie zum nächsten Test. Sie müssen nicht zwingend alle vorherigen Tests erfüllt haben, damit die späteren Tests erfolgreich sind.
+
+=== Teilaufgaben
+
+**a) (9 Punkte)** Bringen Sie so viele Tests wie möglich in der Klasse `BirdTest` erfolgreich zum passen. Sie können davon ausgehen, dass mit der Klasse `BirdTest` die ganze Klasse `Bird` getestet wird, auch wenn Tests fehlen.
+
+**b) (5 Punkte)** Bringen Sie so viele Tests wie möglich in der Klasse `BirdhouseTest` erfolgreich zum passen.
+
+**c) (3 Punkte)** Schreiben Sie Tests für die Klasse `Blackbird` in `BlackbirdTest`. Testen Sie dabei ausschliesslich was in der Klasse `Blackbird` steht und nicht was auch noch in `Bird` ist, auch wenn `Blackbird` von `Bird` erbt.
+
+== Aufgabe 2 - Generische Klasse (4 Punkte)
+
+Im Package `aufgabe2` soll die Klasse `Birdhouse` nun so abgeändert werden, dass pro Vogelhaus nur **eine** bestimmte Vogelrasse nur **eine** bestimmte Futterart bekommen darf.
+Die einzige Ausnahme ist, dass **jede** Vogelart an **jedem** Vogelhaus über die generische Methode `feedWater` weiterhin Wasser trinken dürfen soll, solange es Vögel sind.
+
+Dazu soll die **Klasse**, **Variablen** und **alle** Methoden (egal ob statisch oder nicht) generisch gemacht werden.
+
+Zum Beispiel sollte ein `Birdhouse` wie folgt instanziiert werden können:
+
+----
+Birdhouse<Woodpecker, Nut> birdhouse = new Birdhouse<>();
+----
+
+== Bewertung
+
+Insgesamt können maximal 21 Punkte erzielt werden.
+
+Compiliert Ihr Code nicht, führt das zu einem deutlichen Punkteabzug.
+
+*0 Punkte* gibt es
+
+* falls Ihr Name nicht im "Bearbeiten von"-Abschnittt dieses README-Files eingetragen ist
+* bei unerlaubten Veränderungen vom Code gemäss den Aufgaben
+* bei Plagiaten oder Betrügen in irgendeiner Weise
+
+== Bei Problemen mit dem IntelliJ-Setup
+
+Es kommt immer wieder mal vor, dass der Setup des IntelliJ-Projekts nicht auf Anhieb funktioniert oder "plötzlich"
+nicht mehr funktioniert.
+
+Sie brauchen in so einem Fall NICHT nochmal den Invitation-Link annehmen oder das Projekt via “Project from Version Control” oder "git clone …" nochmal anlegen.
+
+**WICHTIG: **Sollten Sie noch Code geschrieben haben seitdem Sie das letzte Mal einen Commit gemacht haben, machen Sie einen Commit und einen Push bevor Sie die folgenden Schritte befolgen.
+
+Versuchen Sie stattdessen die folgenden Dinge, in der genannten Reihenfolge und prüfen nach jedem Schritt, ob es wieder funktioniert:
+
+1. Gehen Sie auf "File -&gt; Project Structure..." und stellen Sie sicher, dass im neuen Fenster im Reiter "Project" unter "SDK" das Azul JDK 19 mit JavaFX ausgewählt ist
+
+2. Gehen Sie auf "Build -&gt; Rebuild Project"
+
+3. Sollten Sie im IntelliJ links bei den Dateien als Symbol der Datei `pom.xml` **KEIN** blaues "m" haben
+  - Machen Sie einen Rechtsklick auf die Datei `pom.xml` und klicken Sie dann auf "Add as Maven Project" (ziemlich weit unten)
+  - Sollten Sie gefragt werden, klicken Sie auf "Trust Project"
+
+4. Gehen Sie auf "View -&gt; Tool Windows -&gt; Maven", im neu geöffneten "Maven" Fenster:
+  - Warten Sie jeweils zwischen den Klicks auf die Buttons bis IntelliJ mit dem jeweiligen Prozess fertig ist
+  - Klicken Sie oben unterhalb von "Maven" zuerst auf den ersten Button "Reload All Maven Projects"
+  - Dann auf den Button daneben "Generate Sources ..."
+  - Dann auf den Button daneben "Download Sources..." und dann auf "Download Sources and Documentation"
+
+5. Gehen Sie auf "File -&gt; Invalidate Caches...", im neu geöffneten Dialog:
+  - Ein Häkchen hinzufügen bei "Clear file system cache..."
+  - Dann auf "Invalidate and Restart" klicken
+
+6. Projekt im IntelliJ schliessen
+  - Pfad des Projekts im Finder / Explorer öffnen
+  - Das Verzeichnis `.idea` löschen (es könnte je nach dem notwendig sein, versteckte Ordner anzeigen zu lassen)
+  - Im IntelliJ auf "File -&gt; Open" gehen, Pfad des Ordners vom Projekt auswählen und öffnen
+  - Falls gefragt "Trust Project" anklicken
+  - Sollte dies nicht helfen, versuchen Sie Schritte 1-3 erneut, und falls das auch nicht hilft, gehen Sie zu Schritt 7
+
+7. Projekt im IntelliJ schliessen
+  - Ordner vom Projekt im Finder / Explorer löschen
+  - Gehen Sie auf "File -&gt; New -&gt; Project from Version Control"
+  - Gehen Sie nun weiter vor, wie wenn Sie ein Projekt zum ersten Mal von GitHub neu anlegen.
