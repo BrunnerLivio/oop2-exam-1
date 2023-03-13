@@ -11,7 +11,11 @@ public class Birdhouse {
   Map<Food, Integer> foodToAmountMap = new HashMap<>();
 
   public void addFood(Food food, int amount) {
-    foodToAmountMap.put(food, amount);
+    if (foodToAmountMap.keySet().contains(food)) {
+      foodToAmountMap.put(food, foodToAmountMap.get(food) + amount);
+    } else {
+      foodToAmountMap.put(food, amount);
+    }
   }
 
   public Map<Food, Integer> getFoodToAmountMap() {

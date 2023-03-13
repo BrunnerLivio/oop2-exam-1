@@ -14,6 +14,18 @@ import aufgabe1.food.Worm;
 class BlackbirdTest {
 
   @Test
+  void testPreferredFoodSize() {
+    // given
+    Blackbird blackbird = new Blackbird();
+
+    // when
+    Set<Food> preferredFoods = blackbird.getPreferredFoods();
+
+    // then
+    assertEquals(preferredFoods.size(), 2);
+  }
+
+  @Test
   void testEatsPreferredFood() {
     // given
     Blackbird blackbird = new Blackbird();
